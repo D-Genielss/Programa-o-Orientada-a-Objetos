@@ -14,19 +14,20 @@ public class Exercicio1 {
     Entidade balao = 
         new Entidade();
     balao.dano = 10;
-    balao.classe = "Vermelho";
+    balao.classe = "Balão Vermelho";
     balao.vida = 10;
     balao.Velocidade = 10;
     
         System.out.printf("Nome : %s \n",mamaco.classe);
         System.out.println("");
         System.out.printf("Nome : %s \n",balao.classe);
+        
     }
 
 }
     class Entidade {
 
-//Atributos das entidades
+    //Atributos das entidades
 
     int dano;
     String classe;
@@ -35,6 +36,30 @@ public class Exercicio1 {
 
     //metodos (acoes do jogo)
 
+        void Metodo_Qualquer(String qualquer){
+
+        }
+
+    }
+
+    class Construcao extends Entidade {
+        //nd ainda , mas tem td que a Entidade tem 
+
+        int Gera_Dinheiro ;
+
+        public Construcao(String tipo){
+            Metodo_Qualquer(tipo);
+        }
+
+        //metodos podem ser reescritos 
+
+        @Override 
+
+        void Metodo_Qualquer(String qualquer){
+            //retorna outro metodo
+            // + outro metodo que eu quiser
+
+        }
     }
 
    
