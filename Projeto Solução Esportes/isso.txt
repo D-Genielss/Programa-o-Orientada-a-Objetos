@@ -3,3 +3,5 @@ perdão estava na casa da minha namorada sabado e domingo resolvendo B.Os
 20/10 Finalmente instalei o java na minha maquina 
       configurei meu espaço de trabalho 
       comecei um espaço de teste
+21/10 Sistema de menu "implementado " e aba para Regras criada 
+
