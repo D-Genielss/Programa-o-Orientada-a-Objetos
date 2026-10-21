@@ -11,11 +11,17 @@ public class Main{
 
         //Sistema principal: faz sempre voltar pro menu inicial 
         while(Rodando_Menu == true){
-
-            System.out.println("Escolha : ");
+            System.out.println("_____________________________________");            
+            System.out.println("            MENU PRINCIPAL           ");
             System.out.println("1 _ Regras");
             System.out.println("2 _ Dividendos e Atrasos");
+            System.out.println("3 _ Historico de Alugados");
+            System.out.println("4 _ Alugar ");// Mostrar os que ja estoa alugados no momento 
+            System.out.println("5 _ Devolver");
+            System.out.println("6 _ Cadastrar");
             System.out.println("0 _ Para Encerrar");
+            System.out.println("_____________________________________");
+            System.out.print("Escolha : ");            
             int escolha = leitor.nextInt();
             
             //limpa buffer
@@ -24,7 +30,7 @@ public class Main{
             switch (escolha) {
                 //Encerrar
                 case 0:
-
+                System.out.println("Encerrando ....");
                 Rodando_Menu = false;
 
                 break;
@@ -57,6 +63,28 @@ public class Main{
 
                 System.out.println("Dividendos e atrasos");
                 
+                break;
+                //Cadastrar
+                case 6:
+
+                    System.out.println("Cadastrar");
+                    System.out.println("1_cadastrar Pessoa");
+                    System.out.println("2_cadastrar Itens Esportivos");
+                    System.out.print("Escolha : ");
+                    int Cadastrar = leitor.nextInt();
+
+                    if(Cadastrar == 1){
+                    //Cadastra Pessoa
+
+                    }else if(Cadastrar == 2){
+                    //Cadastra Itens Esportivos
+
+                    }else{
+
+                        System.out.println("ops algo deu errado");
+
+                    }
+
                 break;
             
                 default:
