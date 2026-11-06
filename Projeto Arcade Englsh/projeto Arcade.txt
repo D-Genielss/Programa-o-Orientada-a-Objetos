@@ -1,4 +1,4 @@
-1 . o game eh uma parodia de um arcade classico de fliperama 
+1 . o game eh uma parodia de um arcade classico de fliperama (Space invaders ou galaga)
 2 . sera feito para o desinvolvimento do ingles de maneira divertida
 3 . sistema de vidas que  beneficia quem aprende 
 4 . feito inteiramente em java=
