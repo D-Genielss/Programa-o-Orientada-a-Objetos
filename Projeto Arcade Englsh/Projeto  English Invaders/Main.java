@@ -20,6 +20,7 @@ public class Main {
         System.out.println("1 _ Start Game");
         System.out.println("2 _ Register Words");
         System.out.println("3 _ Show Winners");
+        System.out.println("4 _ Clear");
         System.out.println("0 _ Exit");
         System.out.println("_____________________________________");
 
@@ -65,6 +66,7 @@ public class Main {
                        }
                    }
                    System.out.println("Fim de jogo, " + jogador.getNome() + "! Pontuação: " + jogador.pontuacao);
+                   Arquivo.salvarVencedor(jogador);
                    Jogando = false;
                 }
                 break;
@@ -116,8 +118,50 @@ public class Main {
                 break;
             case 3:
                 System.out.println("Showing Winners...");
-                // Add logic to show winners here
+                System.out.println("");
+                
+                ArrayList<Player> vencedores = Arquivo.carregarVencedores();
+                
+                if (vencedores.isEmpty()) {
+                    System.out.println("Nenhum jogador registrado ainda.");
+                } else {
+                    int posicao = 1;
+                    for (Player p : vencedores) {
+                        System.out.println(posicao + "º - " + p.getNome() + " | Pontos: " + p.pontuacao);
+                        posicao++;
+                    }
+                }
+                System.out.println("");
                 break;
+            
+            case 4:
+                //Dar clear nas Words ou Winners
+                System.out.println("_____________________________________");
+                System.out.println("             CLEAR MENU              ");
+                System.out.println("1 _ Clear Words");
+                System.out.println("2 _ Clear Winners");
+                System.out.println("0 _ Cancel");
+                System.out.print("Escolha o que deseja limpar: ");
+                
+                int escolhaClear = leitor.nextInt();
+                leitor.nextLine(); //limpa o buffer do teclado
+
+                if (escolhaClear == 1) {
+                    System.out.println("Clearing Words...");
+                    listaPalavras.clear(); //limpa a lista na memória
+                    Arquivo.salvar(listaPalavras); //salva a lista vazia no arquivo
+                    System.out.println("Todas as palavras foram apagadas com sucesso!");
+                } else if (escolhaClear == 2) {
+                    System.out.println("Clearing Winners...");
+                    Arquivo.limparVencedores(); //chama o metodo que zera o txt
+                    System.out.println("O histórico de vencedores foi apagado com sucesso!");
+                } else if (escolhaClear == 0) {
+                    System.out.println("Operação cancelada.");
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+                break;
+
             case 0:
                 System.out.println("Exiting ....");
                 Rodando_Menu = false;
@@ -238,4 +282,49 @@ class Arquivo {
 
         return lista;
     }
+    
+    public static void salvarVencedor(Player jogador) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter("winners.txt", true))) {
+            pw.println(jogador.getNome() + ";" + jogador.pontuacao);
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar vencedor: " + e.getMessage());
+        }
+    }
+
+    public static ArrayList<Player> carregarVencedores() {
+        ArrayList<Player> lista = new ArrayList<>();
+        File arquivo = new File("winners.txt");
+
+        if (!arquivo.exists()) {
+            return lista; //se o arquivo nao existir, retorna a lista vazia
+        }
+    
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                String[] partes = linha.split(";");
+                if (partes.length == 2) {
+                    Player p = new Player();
+                    p.setNome(partes[0]);
+                    p.pontuacao = Integer.parseInt(partes[1]);
+                    lista.add(p);
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Erro ao carregar vencedores: " + e.getMessage());
+        }
+
+        lista.sort((p1, p2) -> Integer.compare(p2.pontuacao, p1.pontuacao));
+
+        return lista;
+    }
+    
+    public static void limparVencedores() {
+        try (PrintWriter pw = new PrintWriter(new FileWriter("winners.txt"))) {
+        } catch (IOException e) {
+            System.out.println("Erro ao limpar arquivo de vencedores: " + e.getMessage());
+        }
+    }
 }
+
+
