@@ -1,5 +1,8 @@
 1 . o game eh uma parodia de um arcade classico de fliperama (Space invaders ou galaga)
 2 . sera feito para o desinvolvimento do ingles de maneira divertida
 3 . sistema de vidas que  beneficia quem aprende 
-4 . feito inteiramente em java=
+4 . feito inteiramente em java
 5 . obrigatoriamente usar gatos alienigenas 
+
+10/11 > Daniel : Criei projeto , implementei varias funções (registrar , começar jogar , exit e criar e salvas as palavras no arquivo);
+10/11 > Gabriel : Criar a Sprint 1 , implementar a função (mostrar vencedores);
