@@ -1,0 +1,4 @@
+Equipe: Gabriel e Daniel
+Linguagem: Java
+
+O projeto consiste no desenvolvimento de um jogo inspirado no Space Invaders, um sistema interativo que adapta a mecânica clássica de tiro espacial ao aprendizado de vocabulário em língua estrangeira. O público-alvo são estudantes que buscam reforçar termos em inglês de maneira lúdica e dinâmica. Durante o fluxo do jogo, o jogador identifica alvos e, ao interagir com elementos que divergem do tema proposto, é desafiado a submeter a tradução correta da palavra exibida para prosseguir sem perder vidas. Entre as principais funcionalidades estão a gestão de rodadas de tradução, controle de pontuação e vidas, módulo de cadastro e visualização de palavras com suas respectivas categorias, persistência de dados em arquivos de texto e exibição de ranking decrescente de pontuações dos jogadores.
