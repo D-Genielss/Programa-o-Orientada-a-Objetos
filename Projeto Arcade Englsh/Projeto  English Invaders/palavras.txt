@@ -1,2 +1,8 @@
-apple;maca;maca
-golden apple;maca dourada;maca
+apple;maca;fruta
+banana;banana;fruta
+mango;manga;fruta
+papaya;mamao;fruta
+coconut;coco;fruta
+pineapple;abacaxi;fruta
+avocato;abacate;fruta
+orange;laranja;fruta
