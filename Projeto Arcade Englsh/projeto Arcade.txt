@@ -4,5 +4,20 @@
 4 . Feito inteiramente em java.
 5 . Obrigatoriamente usar gatos alienígenas.
 
+_____________TASKS(marcar como feita dpois)__________________________________________________________
+1.mudar as classes pra arquivos separados da main e corrigir bugs relacionados a isso
+2.fazer as telas (apenas para mapeamento e divisao de tasks).
+3.fazer menu principal interativo
+4.fazer logica da nave (classe nova).
+5.fazer inimigos(transformar classe Words em herança).
+6.fazer classes (palavras inimigas(consomem vida ou n geram pontos)), (palavras amigas(geram pontos)).
+7.fazer tela cadastro.
+8.fazer tela vencedores.
+9.fazer tela limpar.
+10.corrigir bugs.
+_____________________________________________________________________________________________________
+
 10/11 > Daniel : Criei projeto , implementei varias funções (registrar , começar jogar , exit e criar e salvar as palavras no arquivo);
 10/11 > Gabriel : Criar a Sprint 1 , implementar a função (mostrar vencedores) e o Clear para limpar Words e Winners;
+
+13/11 > Daniel : Decidi fazer uma lista de tasks pra ajudar no andamento do projeto .
