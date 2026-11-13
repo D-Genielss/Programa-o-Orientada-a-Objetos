@@ -6,3 +6,5 @@ coconut;coco;fruta
 pineapple;abacaxi;fruta
 avocato;abacate;fruta
 orange;laranja;fruta
+grape;uva;fruta
+;;
