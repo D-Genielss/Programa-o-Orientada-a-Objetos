@@ -1,19 +1,24 @@
 public class Player {
-        
     //Variaveis
-
-        int vida = 3;
-        String nome;
-        int pontuacao = 0;
+        private int vida = 3;
+        private String nome;
+        private int pontuacao = 0;
 
     //Metodos
-
         public void perderVida(){
-            vida--;
+            if(this.vida > 0){
+                this.vida--;
+            }
+        }
+        public int getVida(){
+            return this.vida;
         }
 
         public void ganharPonto(){
-            pontuacao++;
+            this.pontuacao++;
+        }
+        public int getPonto(){
+            return this.pontuacao;
         }
 
         //Setters========================================
@@ -26,6 +31,14 @@ public class Player {
             return nome;
         }
 
+        //Construtor (Sobrecarga) para o Player
+        public Player(String nome, int pontuacao){
+            this.nome = nome;
+            if (pontuacao >= 0){
+                this.pontuacao = pontuacao;
+            }
+        }
+        public Player(){
+        }
     //Fim dos metodos
-
 }
