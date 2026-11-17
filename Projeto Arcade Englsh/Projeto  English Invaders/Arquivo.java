@@ -49,7 +49,7 @@ public class Arquivo {
     
     public static void salvarVencedor(Player jogador) {
         try (PrintWriter pw = new PrintWriter(new FileWriter("winners.txt", true))) {
-            pw.println(jogador.getNome() + ";" + jogador.pontuacao);
+            pw.println(jogador.getNome() + ";" + jogador.getPonto());
         } catch (IOException e) {
             System.out.println("Erro ao salvar vencedor: " + e.getMessage());
         }
@@ -68,23 +68,22 @@ public class Arquivo {
             while ((linha = br.readLine()) != null) {
                 String[] partes = linha.split(";");
                 if (partes.length == 2) {
-                    Player p = new Player();
-                    p.setNome(partes[0]);
-                    p.pontuacao = Integer.parseInt(partes[1]);
+                    if (partes.length == 2) {
+                    Player p = new Player(partes[0], Integer.parseInt(partes[1]));
                     lista.add(p);
+                    }
                 }
             }
         } catch (IOException | NumberFormatException e) {
             System.out.println("Erro ao carregar vencedores: " + e.getMessage());
         }
-
-        lista.sort((p1, p2) -> Integer.compare(p2.pontuacao, p1.pontuacao));
-
+        lista.sort((p1, p2) -> Integer.compare(p2.getPonto(), p1.getPonto()));
         return lista;
     }
     
-    public static void limparVencedores() {
-        try (PrintWriter pw = new PrintWriter(new FileWriter("winners.txt"))) {
+    public static void limparVencedores(){
+        try (FileWriter fw = new FileWriter("winners.txt")) {
+            fw.flush();
         } catch (IOException e) {
             System.out.println("Erro ao limpar arquivo de vencedores: " + e.getMessage());
         }
