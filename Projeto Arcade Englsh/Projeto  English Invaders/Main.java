@@ -58,13 +58,13 @@ public class Main {
                            jogador.perderVida();
                        }
 
-                       if (jogador.vida <= 0) {
+                       if (jogador.getVida() <= 0) {
                            System.out.println("Game Over! Você perdeu todas as vidas.");
                            Jogando = false;
                            break;
                        }
                    }
-                   System.out.println("Fim de jogo, " + jogador.getNome() + "! Pontuação: " + jogador.pontuacao);
+                   System.out.println("Fim de jogo, " + jogador.getNome() + "! Pontuação: " + jogador.getPonto());
                    Arquivo.salvarVencedor(jogador);
                    Jogando = false;
                 }
@@ -126,7 +126,7 @@ public class Main {
                 } else {
                     int posicao = 1;
                     for (Player p : vencedores) {
-                        System.out.println(posicao + "º - " + p.getNome() + " | Pontos: " + p.pontuacao);
+                        System.out.println(posicao + "º - " + p.getNome() + " | Pontos: " + p.getPonto());
                         posicao++;
                     }
                 }
@@ -173,6 +173,3 @@ public class Main {
         leitor.close();
     }
 }
-
-
-
