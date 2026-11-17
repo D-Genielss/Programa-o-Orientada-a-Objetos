@@ -17,8 +17,10 @@ _____________TASKS(marcar como feita dpois)_____________________________________
 10.corrigir bugs.
 _____________________________________________________________________________________________________
 
-10/11 > Daniel : Criei projeto , implementei varias funções (registrar , começar jogar , exit e criar e salvar as palavras no arquivo);
-10/11 > Gabriel : Criar a Sprint 1 , implementar a função (mostrar vencedores) e o Clear para limpar Words e Winners;
+10/11 > Daniel: Criei projeto , implementei varias funções (registrar , começar jogar , exit e criar e salvar as palavras no arquivo);
+10/11 > Gabriel: Criar a Sprint 1 , implementar a função (mostrar vencedores) e o Clear para limpar Words e Winners;
 
-13/11 > Daniel : Decidi fazer uma lista de tasks pra ajudar no andamento do projeto.
+13/11 > Daniel: Decidi fazer uma lista de tasks pra ajudar no andamento do projeto.
                  Fiz a primeira task tambem 
+16/11 > Gabriel: Troquei tudo que dava para private, fazendo assim o encapsulamento, herança e etc.
+                 Arrumei um warning no Arquivo.java
