@@ -1,5 +1,6 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Tela {
     public static void main(String[] arg){
@@ -33,7 +34,7 @@ public class Tela {
             Janela.dispose();
             Starting_Game.add(voltar_Menu);
             voltar_Menu.setBounds(10, 10, 100, 30);
-            
+     
         });
         
         register_botao.setBounds(300, 150, 200, 50);
