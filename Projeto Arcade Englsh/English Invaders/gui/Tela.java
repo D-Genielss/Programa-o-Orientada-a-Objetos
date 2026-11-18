@@ -1,93 +1,106 @@
 package gui;
-import logica.*;
-
+//import logica.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import java.awt.*;
 
-public class Tela {
-    public static void main(String[] arg){
-        //Swing___________________________________________________________________________________________________________________________________________________________________________________
-    JButton voltar_Menu = new JButton("Voltar");
-    JFrame Janela = new JFrame("English Invaders");
-        JButton start_botao = new JButton("Start Game");
-            JFrame Starting_Game = new JFrame("English Invaders/Starting Game");
-        JButton register_botao = new JButton("Register Words");
-            JFrame Register_Words = new JFrame("English Invaders/Register Words");
-        JButton show_botao = new JButton("Show Winners");
-            JFrame Show_Winners = new JFrame("English Invaders/Show Winners");
-        JButton clear_botao = new JButton("Clear");
-            JFrame Clear = new JFrame("English Invaders/Clear");
-    
-    
-    //janela menu
-    Janela.setLayout(null);
-    Janela.setBounds(0, 0, 800, 600);   
-    Janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-    Janela.setVisible(true);
+//import java.awt.event.*;
 
-        start_botao.setBounds(300, 100, 200, 50);
-        Janela.add(start_botao);
-        start_botao.addActionListener(e -> {
-            // Iniciar o jogo
-            Starting_Game.setLayout(null);
-            Starting_Game.setVisible(true);
-            Starting_Game.setBounds(0, 0, 800, 600);   
-            Starting_Game.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            Janela.dispose();
-            Starting_Game.add(voltar_Menu);
-            voltar_Menu.setBounds(10, 10, 100, 30);
-     
-        });
-        
-        register_botao.setBounds(300, 150, 200, 50);
-        Janela.add(register_botao);
-        register_botao.addActionListener(e -> {
-            // Registrar palavras
-            Register_Words.setLayout(null);
-            Register_Words.setVisible(true);
-            Register_Words.setBounds(0, 0, 800, 600);   
-            Register_Words.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            Janela.dispose();
-            Register_Words.add(voltar_Menu);
-            voltar_Menu.setBounds(10, 10, 100, 30);
-        });
+public class Tela extends JFrame {
 
-        show_botao.setBounds(300, 200, 200, 50);
-        Janela.add(show_botao);
-        show_botao.addActionListener(e -> {
-            // Mostrar vencedores
-            Show_Winners.setLayout(null);
-            Show_Winners.setVisible(true);
-            Show_Winners.setBounds(0, 0, 800, 600);   
-            Show_Winners.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            Janela.dispose();
-            Show_Winners.add(voltar_Menu);
-            voltar_Menu.setBounds(10, 10, 100, 30);
-        });
+    CardLayout cards = new CardLayout();
+    JPanel root = new JPanel(cards);
 
-        clear_botao.setBounds(300, 250, 200, 50);
-        Janela.add(clear_botao);
-        clear_botao.addActionListener(e -> {
-            // Limpar dados
-            Clear.setLayout(null);  
-            Clear.setVisible(true);
-            Clear.setBounds(0, 0, 800, 600);   
-            Clear.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            Janela.dispose();
-            Clear.add(voltar_Menu);
-            voltar_Menu.setBounds(10, 10, 100, 30);
-        });
+    JPanel menu = new JPanel();
+        JPanel cadastrar_jogadores = new JPanel();
+            GameTela game = new GameTela();
+        JPanel cadastrar_palavras = new JPanel();
+        JPanel clear = new JPanel();
 
-        voltar_Menu.addActionListener( e -> {
-            // Voltar para o menu principal
-            Janela.setVisible(true);
-            Janela.setBounds(0, 0, 800, 600);   
-            Janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            Starting_Game.dispose();
-            Register_Words.dispose();
-            Show_Winners.dispose();
-            Clear.dispose();
-        }       );
+    //Métodos 
+
+    private JButton criarVoltar(String destino) {
+        JButton b = new JButton("Voltar");
+        b.setFocusable(false);
+        b.addActionListener(e -> cards.show(root, destino));
+        return b;
     }
+
+    public Tela(){
+        
+        //Menu
+        setTitle("English Invaders");
+        menu.setPreferredSize(new Dimension(800, 500));
+        menu.setBackground(Color.BLACK);
+        JButton botao_jogador = new JButton("Cadastrar Jogadores");
+        menu.add(botao_jogador);
+        botao_jogador.addActionListener(e -> cards.show(root, "Cadastrar Jogadores"));
+
+            //Cadastrar Jogadores 
+            cadastrar_jogadores.add(criarVoltar("Menu"));
+
+            cadastrar_jogadores.setPreferredSize(new Dimension(800, 500));
+            cadastrar_jogadores.setBackground(Color.DARK_GRAY);            
+            JButton botao_jogar = new JButton("Jogar");
+            cadastrar_jogadores.add(botao_jogar);
+
+                //Jogar
+                game.add(criarVoltar("Cadastrar Jogadores"));
+                JButton voltarGame = criarVoltar("Cadastrar Jogadores");
+                voltarGame.addActionListener(ev -> game.parar());
+                game.add(voltarGame);
+
+                botao_jogar.addActionListener(e -> {
+                    cards.show(root, "Game");
+                    game.iniciar();
+                    
+                });
+
+        //Cadastrar Palavras
+        JButton botao_palavras = new JButton("Cadastrar Palavras");
+        menu.add(botao_palavras);
+        botao_palavras.addActionListener(e -> cards.show(root, "Cadastrar Palavras")); 
+
+            cadastrar_palavras.add(criarVoltar("Menu"));
+        
+            cadastrar_palavras.setPreferredSize(new Dimension(800, 500));
+            cadastrar_palavras.setBackground(Color.DARK_GRAY);
+
+        //Clear
+        JButton botao_clear = new JButton("Clear");
+        menu.add(botao_clear);
+        botao_clear.addActionListener(e -> cards.show(root, "Clear"));
+
+            clear.add(criarVoltar("Menu"));
+
+            clear.setPreferredSize(new Dimension(800, 500));
+            clear.setBackground(Color.DARK_GRAY);
+
+        //Adicionar os paineis ao CardLayout
+        root.add(menu, "Menu");
+            root.add(cadastrar_jogadores, "Cadastrar Jogadores");
+                root.add(game, "Game");
+            root.add(cadastrar_palavras, "Cadastrar Palavras");
+            root.add(clear, "Clear");
+
+        //Configurações da janela
+        setContentPane(root);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+
+    }
+
+     public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new Tela().setVisible(true));
+    }
+
+
+    //Comando que precisa para executar
+    //cd "C:\Users\dggm0\OneDrive\Área de Trabalho\Programa-o-Orientada-a-Objetos\Projeto Arcade Englsh\English Invaders"
+    //javac gui\Tela.java
+    //java gui.Tela
 }
+    
