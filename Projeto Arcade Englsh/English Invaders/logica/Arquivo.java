@@ -16,6 +16,8 @@ public class Arquivo {
             for (Words w : lista) {
                 pw.println(w.getPalavra() + ";" + w.getTraducao() + ";" + w.getCategoria() + ";" + w.getTipo());
             }
+            System.out.println("Palavras salvas com sucesso!" + lista.size() + " palavras salvas.");
+            
         } catch (IOException e) {
             System.out.println("Erro ao salvar: " + e.getMessage());
         }

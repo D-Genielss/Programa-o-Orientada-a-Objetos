@@ -97,20 +97,23 @@ public class Main {
 
                     System.out.print("Digite a categoria: ");
                     String categoria = leitor.nextLine();
-
+                    /*
                     System.out.print("Tipo (1 - Inimiga / 2 - Amiga): ");
                     int tipo = leitor.nextInt();
                     leitor.nextLine();
-
-                    Words novaPalavra;
+                    
+                     
                     if (tipo == 2) {
                         novaPalavra = new PalavraAmiga(palavra, traducao, categoria);
                     } else {
                         novaPalavra = new PalavraInimiga(palavra, traducao, categoria);
                     }
+                    */
 
-                    listaPalavras.add(novaPalavra);
-                    Arquivo.salvar(listaPalavras);
+                    Words novaPalavra = new Words();
+                    novaPalavra.recebe_word(palavra, traducao, categoria);
+
+                    Arquivo.salvar(novaPalavra.getListaPalavras());
 
                     System.out.println("Palavra registrada com sucesso!");
 

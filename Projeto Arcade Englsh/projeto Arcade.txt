@@ -11,7 +11,7 @@ _____________TASKS(marcar como feita dpois)_____________________________________
 (metade feito , Daniel)4.fazer logica da nave (classe nova).
 (feito,Gabriel) 5.fazer inimigos(transformar classe Words em herança).
 (feito, Gabriel) 6.fazer classes (palavras inimigas(consomem vida ou n geram pontos)), (palavras amigas(geram pontos)).
-7.fazer tela cadastro.
+(feito, Daniel)7.fazer tela cadastro.
 8.fazer tela vencedores.
 9.fazer tela limpar.
 10.corrigir bugs.

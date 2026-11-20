@@ -2,8 +2,14 @@ package gui;
 //import logica.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import logica.Arquivo;
+import logica.Words;
+
 import java.awt.*;
 
 //import java.awt.event.*;
@@ -48,9 +54,6 @@ public class Tela extends JFrame {
 
                 //Jogar
                 game.add(criarVoltar("Cadastrar Jogadores"));
-                JButton voltarGame = criarVoltar("Cadastrar Jogadores");
-                voltarGame.addActionListener(ev -> game.parar());
-                game.add(voltarGame);
 
                 botao_jogar.addActionListener(e -> {
                     cards.show(root, "Game");
@@ -59,14 +62,37 @@ public class Tela extends JFrame {
                 });
 
         //Cadastrar Palavras
-        JButton botao_palavras = new JButton("Cadastrar Palavras");
-        menu.add(botao_palavras);
-        botao_palavras.addActionListener(e -> cards.show(root, "Cadastrar Palavras")); 
+         // Cadastrar Palavras
+            JButton botao_palavras = new JButton("Cadastrar Palavras");
+            menu.add(botao_palavras);
+            botao_palavras.addActionListener(e -> cards.show(root, "Cadastrar Palavras"));
+
+            Tela_Cadastro cadastrar_palavras = new Tela_Cadastro(() -> cards.show(root, "Menu"));
+            root.add(cadastrar_palavras, "Cadastrar Palavras"); 
 
             cadastrar_palavras.add(criarVoltar("Menu"));
         
             cadastrar_palavras.setPreferredSize(new Dimension(800, 500));
             cadastrar_palavras.setBackground(Color.DARK_GRAY);
+            
+            JTextField palavra = new JTextField(20);
+            JTextField traducao = new JTextField(20);
+            JTextField categoria = new JTextField(20);
+            JButton enviar_word = new JButton("Enviar");
+
+            cadastrar_palavras.add(new JLabel("Word:"));
+            cadastrar_palavras.add(palavra);
+            cadastrar_palavras.add(new JLabel("Tradução:"));
+            cadastrar_palavras.add(traducao);
+            cadastrar_palavras.add(new JLabel("Categoria:"));
+            cadastrar_palavras.add(categoria);
+            cadastrar_palavras.add(enviar_word);
+
+            enviar_word.addActionListener(e -> {
+            Words novaPalavra = new Words();
+            novaPalavra.recebe_word(palavra.getText(), traducao.getText(), categoria.getText());
+            Arquivo.salvar(novaPalavra.getListaPalavras());    
+            });
 
         //Clear
         JButton botao_clear = new JButton("Clear");

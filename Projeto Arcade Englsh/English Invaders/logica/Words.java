@@ -1,12 +1,27 @@
 package logica;
-public class Words {    
+
+import java.util.ArrayList;
+
+public class Words {  
+
     //Variaveis    
+
         private String palavra;
         private String traducao;
         private String categoria;
+        private ArrayList<Words> listaPalavras = new ArrayList<>();
 
     //Metodos
+
+        public void recebe_word(String palavra , String traducao, String categoria){
+            Words word = new Words(palavra, traducao, categoria);
+            listaPalavras.add(word);
+        }
+
+        
+
         //Setters========================================
+
         public void setPalavra(String palavra){
             this.palavra = palavra;
         }
@@ -20,6 +35,11 @@ public class Words {
         }
 
         //Getters========================================
+
+        public ArrayList<Words> getListaPalavras() {
+            return listaPalavras;
+        }
+
         public String getPalavra(){
             return palavra;
         }
